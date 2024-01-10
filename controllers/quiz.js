@@ -17,6 +17,7 @@ exports.create = async (req, res) => {
     }
 }
 
+
 // READ: Menampilkan atau mengambil semua data quiz sesuai model dari database
 exports.getAll = async(req, res) => {
     try {
