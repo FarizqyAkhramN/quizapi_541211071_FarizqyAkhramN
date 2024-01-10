@@ -70,7 +70,7 @@ exports.delete = async(req, res) => {
             data: null,
         });
     }
-};
+}
 
 // Mengambil data sesuai id yang dikirimkan
 exports.findOne = async(req, res) => {
