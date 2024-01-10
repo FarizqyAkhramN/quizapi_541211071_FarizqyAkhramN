@@ -1,5 +1,7 @@
+const { where } = require("sequelize")
 const db = require("../models");
 const Quiz = db.quizzes;
+
 
 exports.sumbitOne = async (req, res) => {
     // data yang didapatkan dari inputan oleh pengguna
@@ -43,16 +45,16 @@ exports.sumbitMany = async (req, res) => {
             const quiz = await Quiz.findOne({
                 limit: 1,
                 where: {
-                    id: jobsheet.quizId[id]
+                    id: jobsheet.quizId[i]
                 },
                 order: [[ 'id', 'DESC' ]],
             });
-            if(quiz.key == jobsheet.answer[1]){
+            if(quiz.key == jobsheet.answer[i]){
                 benar = benar + 1
             }
         }
         res.status(200).json({
-            message: 'benar ${benar} dari ${totalSoal} soal'
+            message: 'benar: ${benar} dari ${totalSoal} soal'
         })
     } catch (e) {
         res.status(500).json({ message: e.message });

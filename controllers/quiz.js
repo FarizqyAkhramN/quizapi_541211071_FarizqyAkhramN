@@ -36,15 +36,15 @@ exports.getAll = async(req, res) => {
 
 // Mengubah data sesuai id yang dikirimkan
 exports.update = async(req, res) => {
-    const id = req.params.id
+    const id = req.params.id;
     try {
-        const quiz = await Quiz.findByPk(id, { rejectOnEmpty: true })
+        const quiz = await Quiz.findByPk(id, { rejectOnEmpty: true });
         quiz.update(req.body, {
             where: {id}
         })
         res.json({
             message: "Quizzes update successfully",
-            data: quizzes,
+            data: quiz,
         });
     } catch (error) {
         res.status(500).json({
