@@ -1,9 +1,9 @@
-const { where } = require("sequelize")
+
 const db = require("../models");
 const Quiz = db.quizzes;
 
 
-exports.sumbitOne = async (req, res) => {
+exports.submitOne = async (req, res) => {
     // data yang didapatkan dari inputan oleh pengguna
     const jobsheet = {
         quizId: req.body.quizId,
@@ -23,7 +23,7 @@ exports.sumbitOne = async (req, res) => {
             })
         } else {
             res.status(200).json({
-                "message": 'jawaban benar adalah ${quiz.key}'
+                "message": `jawaban benar adalah ${quiz.key}`
             })
         }
     } catch (e) {
@@ -31,7 +31,7 @@ exports.sumbitOne = async (req, res) => {
     }
 };
 
-exports.sumbitMany = async (req, res) => {
+exports.submitMany = async (req, res) => {
     // data yang didapatkan dari inputan oleh pengguna
     const jobsheet = {
         quizId: req.body.quizId,
@@ -54,7 +54,7 @@ exports.sumbitMany = async (req, res) => {
             }
         }
         res.status(200).json({
-            message: 'benar: ${benar} dari ${totalSoal} soal'
+            message: `benar: ${benar} dari ${totalSoal} soal`
         })
     } catch (e) {
         res.status(500).json({ message: e.message });
